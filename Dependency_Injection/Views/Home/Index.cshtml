@@ -1,4 +1,9 @@
-﻿@{
+﻿@inject Dependency_Injection.Services.Interfaces.ILog log
+ 
+@{
+    log // View'dan Container'ı çağırma işlemi 
+}
+@{
     ViewData["Title"] = "Home Page";
 }
 
