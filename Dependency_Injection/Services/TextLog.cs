@@ -6,7 +6,7 @@ namespace Dependency_Injection.Services
     {
         public void Log()
         {
-
+            Console.WriteLine("Text dosyasına loglama işlemi gerçekleştirildi. ");
         }
     }
 }

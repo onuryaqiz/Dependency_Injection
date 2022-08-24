@@ -1,5 +1,6 @@
 ﻿using Dependency_Injection.Models;
 using Dependency_Injection.Services;
+using Dependency_Injection.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,17 +8,26 @@ namespace Dependency_Injection.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILog _log;
+        // Controller'ın Constructor'ından IoC'lere erişebiliriz. 
 
-        public HomeController(ILogger<HomeController> logger)
+        //public ILog Log { get; } // Getter ile erişme ama tercih edilmez.
+        //public HomeController(ILog log)
+        //{
+
+        //    Log = log;
+
+        //}
+
+        public HomeController(ILog log)
         {
-            _logger = logger;
+            _log = log;
         }
 
         public IActionResult Index()
         {
-            ConsoleLog log = new ConsoleLog();
-            log.Log();
+
+            _log.Log();
             return View();
         }
 

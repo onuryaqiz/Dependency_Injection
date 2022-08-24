@@ -10,7 +10,7 @@ namespace Dependency_Injection.Services
         }
         public void Log()
         {
-
+            Console.WriteLine("Console loglama işlemi gerçekleştirildi. ");
         }
     }
 }
