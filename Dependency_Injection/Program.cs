@@ -1,4 +1,5 @@
 ﻿using Dependency_Injection.Services;
+using Dependency_Injection.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddControllersWithViews();
 
 //builder.Services.AddTransient<ConsoleLog>(p=>new ConsoleLog(5));   // Her talebin içindeki request'e göre nesne üretip o şekilde gönderecektir. yani 10 request içinde 10 ayrı talep var ise,
 // 100 nesne üretecektir. 
+
+builder.Services.AddScoped<ILog>(p => new ConsoleLog(5)); // ILog interface'ini Container'e yani IoC'ye eklemiş olduk. 
 
 var app = builder.Build();
 
