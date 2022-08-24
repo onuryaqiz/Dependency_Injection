@@ -7,7 +7,15 @@ builder.Services.AddControllersWithViews();
 //builder.Services.Add(new ServiceDescriptor(typeof(ConsoleLog), new ConsoleLog())); // Default olarak AddSingleton'dır. 
 //builder.Services.Add(new ServiceDescriptor(typeof(TextLog), new TextLog())/*ServiceLifetime.Transient*/);       // Default olarak AddSingleton'dır. Transient olarak kullan dedik.
 
-builder.Services.AddSingleton<ConsoleLog>(); // Bu şekilde Singleton kullanmayız. Çünkü constructor'ında parametre alıyor . Runtime sırasında patlayacaktır. 
+//builder.Services.AddSingleton<ConsoleLog>(); new T(); // Bu şekilde Singleton kullanmayız. Çünkü constructor'ında parametre alıyor . Runtime sırasında patlayacaktır. 
+
+//builder.Services.AddSingleton<ConsoleLog>(p => new ConsoleLog(5)); // Eğer parametre alan bir constructor var ise , yukarıdaki gibi bir davranış sergileyemeyiz.
+//                                                                      Sadece bir tek ConsoleLog nesnesini tüm isteklere tek bir tane ConsoleLog nesnesi gönderecektir.  
+
+//builder.Services.AddScoped<ConsoleLog>(p=>new ConsoleLog(5));      // Her talebe bir ConsoleLog nesnesi üretip gönderecektir. 
+
+//builder.Services.AddTransient<ConsoleLog>(p=>new ConsoleLog(5));   // Her talebin içindeki request'e göre nesne üretip o şekilde gönderecektir. yani 10 request içinde 10 ayrı talep var ise,
+// 100 nesne üretecektir. 
 
 var app = builder.Build();
 
