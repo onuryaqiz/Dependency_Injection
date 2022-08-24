@@ -8,7 +8,7 @@ namespace Dependency_Injection.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILog _log;
+        //private readonly ILog _log;
         // Controller'ın Constructor'ından IoC'lere erişebiliriz. 
 
         //public ILog Log { get; } // Getter ile erişme ama tercih edilmez.
@@ -19,12 +19,12 @@ namespace Dependency_Injection.Controllers
 
         //}
 
-        public HomeController(ILog log)
-        {
-            _log = log;
-        }
+        //public HomeController(ILog log)
+        //{
+        //    _log = log;
+        //}
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices] ILog log) // Action bazlı Dependency Injection'ı kullanmak da bu şekilde olmaktadır. Container'dan getir .
         {
 
             _log.Log();
